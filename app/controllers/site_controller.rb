@@ -8,4 +8,8 @@ class SiteController < ApplicationController
   #   render 'contact'
   # end
   
+  def projects
+    render 'projects'
+  end
+  
 end
