@@ -6,5 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Project.create name: 'New Name', description: 'Thing'
-Project.create name: 'Another project', description: 'Another thing'
+project_one = Project.create name: 'New Name', description: 'Thing'
+project_two = Project.create name: 'Another project', description: 'Another thing'
+
+project_one.entries.create hours: 10, minutes: 10, comments: 'done'   
+project_one.entries.create hours: 2, minutes: 10, comments: 'Ok'   
+project_one.entries.create hours: 5, minutes: 11, comments: 'not done'  
+project_two.entries.create hours: 7, minutes: 16, comments: 'undone'   
+project_two.entries.create hours: 1, minutes: 18, comments: 'blabla'   
+project_two.entries.create hours: 3, minutes: 30, comments: 'right'    

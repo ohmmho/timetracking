@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  
+  has_many :entries
 
   def self.iron_find(n)
     where("name = ?", n)
@@ -12,6 +14,21 @@ class Project < ActiveRecord::Base
     limit(n).order('created_at desc')
   end
 
-  
+  def get_entries_month(month, year)
+    from =  Date.new(year, month, 1)
+    to = Date.new(year, month, -1)
+    entries.where(created_at: from..to)
+  end
 
+  def calculate_hours_month(month, year)
+    sum = 0 
+    get_entries_month(month,year).each do |entry|
+      sum += entry.minutes
+      sum += (entry.hours / 60)
+    end
+    hours = sum / 60
+    minutes = sum % 60
+    "Hours: #{hours}, mins: #{minutes}"
+  end
+  
 end

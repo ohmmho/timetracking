@@ -1,0 +1,13 @@
+<h1> A single project with entries </h1>
+
+<h3><%= @project.name %></h3>
+<ul>
+<% time_worked = @entries.calculate_hours_month(2, 2015) %>
+  <% @time_worked.each do |entry| %>
+  <li>
+    <%= entry.hours %> h
+    <%= entry.minutes %> m </br>
+   Comments: <%= entry.comments %> 
+  </li>
+  <%end%>  
+</ul>
