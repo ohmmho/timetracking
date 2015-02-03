@@ -1,7 +1,9 @@
 <p> Here go ONE projects </p>
 
 <% if @project.description %>
+
   <%= "Name:  #{@project.name} - Description: #{@project.description}" %>
     <% else %>
   <%= "Name:  #{@project.name}" %>
 <% end %>
+

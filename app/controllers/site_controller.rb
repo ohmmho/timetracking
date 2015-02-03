@@ -4,9 +4,9 @@ class SiteController < ApplicationController
     render 'home'
   end
 
-  # def contact
-  #   render 'contact'
-  # end
+  def contact
+    render 'contact'
+  end
   
   def projects
     render 'projects'
