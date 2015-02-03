@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
     sum = 0 
     get_entries_month(month,year).each do |entry|
       sum += entry.minutes
-      sum += (entry.hours / 60)
+      sum += (entry.hours * 60)
     end
     hours = sum / 60
     minutes = sum % 60
