@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
   
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
+  
+
   has_many :entries
 
   def self.iron_find(n)
