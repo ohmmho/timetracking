@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.last_created_projects(3)
+    @projects = Project.last_created_projects(10)
     if @projects.empty?
       render 'no_projects'
     end
@@ -14,6 +14,25 @@ class ProjectsController < ApplicationController
       render 'no_projects_found'
     end
   end
+
+  def new
+    @project = Project.new
+  end
+
+  def create
+    @project = Project.new project_params 
+    if @project.save
+      redirect_to action: 'index'
+    else
+      render 'new'
+    end
+  end
+
+  private 
+  
+  def project_params
+    params.require(:project).permit(:name, :description)
+  end 
 end
 
 
